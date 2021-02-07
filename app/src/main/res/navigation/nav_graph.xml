@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/imageCaptureFragment"
+        android:name="r2.studios.skincancerdetect.fragments.ImageCaptureFragment"
+        android:label="image_capture_fragment">
+        <action
+            android:id="@+id/action_imageCaptureFragment_to_permissionsFragment"
+            app:destination="@id/permissionsFragment" />
+        <action
+            android:id="@+id/action_imageCaptureFragment_to_classificationFragment"
+            app:destination="@id/classificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/permissionsFragment"
+        android:name="r2.studios.skincancerdetect.fragments.PermissionsFragment"
+        android:label="PermissionsFragment" >
+        <action
+            android:id="@+id/action_permissionsFragment_to_imageCaptureFragment"
+            app:destination="@id/imageCaptureFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/classificationFragment"
+        android:name="r2.studios.skincancerdetect.fragments.ClassificationFragment"
+        android:label="fragment_classification_layout"
+        tools:layout="@layout/fragment_classification_layout">
+        <action
+            android:id="@+id/action_classificationFragment_to_imageCaptureFragment"
+            app:destination="@id/imageCaptureFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit" />
+        <argument
+            android:name="image"
+            app:argType="android.graphics.Bitmap" />
+        <action
+            android:id="@+id/action_classificationFragment_to_savedLesionFragment"
+            app:destination="@id/savedLesionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="r2.studios.skincancerdetect.fragments.SignInFragment"
+        android:label="SignInFragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_permissionsFragment"
+            app:destination="@id/permissionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedLesionFragment"
+        android:name="r2.studios.skincancerdetect.fragments.SavedLesionFragment"
+        android:label="SavedLesionFragment" />
+</navigation>
